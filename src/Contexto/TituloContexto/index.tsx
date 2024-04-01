@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { createContext, ReactNode } from 'react';
 
-export interface Teste {
-    titulo:String,
-    paragrafo: Array<string>
+// Definindo o tipo para o valor do contexto
+interface ValorDoContexto {
+  titulo: string | null;
+  paragrafo: string[] | null;
 }
 
-const MeuContexto = React.createContext<Teste>({titulo:"", paragrafo:[]});
+// Criando o contexto
+export const ContainerContext = createContext<ValorDoContexto>({
+  titulo: null,
+  paragrafo: null,
+});
 
-export default MeuContexto;
+// Definindo o tipo para os componentes filhos
+interface PropDoContainer {
+  children: ReactNode;
+}
+
+// Criando o provedor de contexto
+export const ContainerProvider = ({ children }: PropDoContainer) => {
+  const meuContexto: ValorDoContexto = {
+    titulo: 'Meu Título',
+    paragrafo: ['Parágrafo 1', 'Parágrafo 2', 'Parágrafo 3'],
+  };
+
+  return (
+    <ContainerContext.Provider value={meuContexto}>
+      {children}
+    </ContainerContext.Provider>
+  );
+};

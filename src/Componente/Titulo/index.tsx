@@ -1,10 +1,9 @@
-import React from 'react';
-import MeuContexto from '../../Contexto/TituloContexto/index';
+import React, { useContext } from 'react';
+import { ContainerContext } from '../../Contexto/TituloContexto';
 
 export const Titulo = () => {
+  const {titulo}  = useContext(ContainerContext);
   return (
-    <MeuContexto.Consumer>
-      {titulo => <h1>{titulo.titulo}</h1>}
-    </MeuContexto.Consumer>
+    <h1>{titulo}</h1>
   );
 };

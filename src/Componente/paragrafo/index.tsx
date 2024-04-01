@@ -1,16 +1,11 @@
-import React from "react";
-import MeuContexto from "../../Contexto/TituloContexto";
+import React, { useContext } from "react";
+import { ContainerContext } from "../../Contexto/TituloContexto";
 
 export const Paragrafo: React.FC = () => {
+  const {paragrafo} = useContext(ContainerContext);
   return (
-    <MeuContexto.Consumer>
-      {(contextValue) => (
-        <div>
-          {contextValue.paragrafo.map((paragrafo, index) => (
-            <p key={index}>{paragrafo}</p>
-          ))}
-        </div>
-      )}
-    </MeuContexto.Consumer>
+    <div>
+      {paragrafo!.map(p => <p>{p}</p>)}
+    </div>
   );
 };
