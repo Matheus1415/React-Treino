@@ -3,14 +3,14 @@ import './App.css';
 import { Titulo } from './Componente/Titulo';
 import { Paragrafo } from './Componente/paragrafo';
 import { ContainerProvider } from './Contexto/TituloContexto'; 
+import Lista from './Componente/Lista';
 
 function App() {
 
   return(
     <div className="App">
       <ContainerProvider>
-        <Titulo/>
-        <Paragrafo/>
+        <Lista/>
       </ContainerProvider>
     </div>
   );
